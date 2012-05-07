@@ -44,6 +44,8 @@ package combat;
  *
  *
  */
+ 
+ //TODO: This class should really implement Observable, and anything that wants to watch it should Observe it, when the timer ticks it should update the observers
 
 import java.util.*;
 
