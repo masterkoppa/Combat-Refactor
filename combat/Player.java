@@ -1,4 +1,7 @@
 package combat;
+
+import java.awt.Rectangle;
+
 /** 
  * @author DevC
  * @version $Id: Player.java,v 1.17 2012/04/08 03:50:18 DevA Exp $
@@ -111,12 +114,17 @@ public class Player extends Sprite
         {
             //On a barrier, I bounce back
             moveBackward();
+            
+            //Don't go through walls when going backwards
+            moveAway(enemy);
         }
         
         //on another player, I bounce back
         else if( enemy instanceof Player )
         {
+        	//We're keeping the original functionality but this still leads to someone pushing the other one
             moveBackward();
+
         }
         
         //on a bullet, I die; so i rotate around for awhile
@@ -219,6 +227,29 @@ public class Player extends Sprite
             //register my move with the board
             board.registerMove( image, this );
         }
+    }
+    
+    
+    /**
+     * Move away from an object.
+     * 
+     * There is a slight bug on the original source where you can back into objects.
+     * 
+     * This method will move the object away when it detects that this bug is occurring. A better
+     * solution would be a complete re-write of the object movement and collision detection where
+     * you could know the last movement and its direction so it could be reversed.
+     * @param object The object that a colision occurred with
+     */
+    private void moveAway(Sprite object){
+    	
+    	Rectangle other = object.getBoundingBox();
+    	Rectangle self = this.getBoundingBox();
+    	
+    	if(other.intersects(self)){
+    		moveForward();
+    		moveForward();
+    	}
+    	
     }
     
    /**
