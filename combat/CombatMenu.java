@@ -104,7 +104,7 @@ public class CombatMenu extends JPanel {
         setKeys.setFocusable(false);
         
         // Add an ActionListener here when we get that ready.
-        final KeyDialog k = new KeyDialog(new JFrame());
+        final KeyDialog k = new KeyDialog(new JFrame(), this.theGame.getPlayer1(), this.theGame.getPlayer2());
         k.setVisible(false);
         setKeys.addActionListener(
             new ActionListener()

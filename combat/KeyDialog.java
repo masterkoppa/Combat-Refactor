@@ -57,27 +57,27 @@ public class KeyDialog extends JDialog
      * Creates this dialog.
      * @param   mainFrame   The frame of the game (which I am part of).
      */
-    public KeyDialog( JFrame mainFrame )
+    public KeyDialog( JFrame mainFrame, PlayerManager playerManagerOne, PlayerManager PlayerManagerTwo )
     {
         //call the parent constructor 
         super( mainFrame, "Key Mapping" );
         
+        this.playerManagerOne = playerManagerOne;
+        this.playerManagerTwo = PlayerManagerTwo;
+        
         //fill the frame with the fields, and then construct it
-        createDialog();
+        this.createDialog();
     }
 
     /**
      * Handles building the dialog box.
      */
-    public void createDialog( PlayerManager playerManagerOne, PlayerManager PlayerManagerTwo )
-    {
-        this.playerManagerOne = playerManagerOne;
-        this.playerManagerTwo = PlayerManagerTwo;
-                        
+    private void createDialog(  )
+    {                   
         //create the components and add them to the panel
         mainPanel = new JPanel( );
         
-        setupInitialKeys( playerManagerOne.getCommands(), PlayerManagerTwo.getCommands() );
+        setupInitialKeys( this.playerManagerOne.getCommands(), this.playerManagerTwo.getCommands() );
         
         mainPanel.setLayout( new GridLayout( 6, 3 ) );
         
