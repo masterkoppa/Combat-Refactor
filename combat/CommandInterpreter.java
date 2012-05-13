@@ -106,9 +106,7 @@ public class CommandInterpreter extends JFrame implements KeyListener
         {
             p2Command = code;
         }
-        //otherwise, if the key event does not match, they hit a key that 
-        //is not registered and we just ignore it
-        else {}
+        
     }
 
     /**
