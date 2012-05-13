@@ -261,31 +261,32 @@ public class Game extends JPanel implements Timed, Runnable {
         {
             if( gameActive )
             {
+            	//Get the player states
                 boolean play1 = level.playerAlive(1);
                 boolean play2 = level.playerAlive(2);
                 
-                if( play1 && !play2 )
-                {
-                    scores.incrementScoreForPlayer(1);
-                    gameActive = false;
-                    System.out.println("Player 1 wins this round.");
-                    level.endPlayer( 1 );
-                    newRound();
+                //If a single player has won
+                if(play1 ^ play2){
+                	//Determine the player number
+                	int player = (play1 ? 1 : 2);
+                	
+                	scores.incrementScoreForPlayer(player);
+                	System.out.println("Player " + player + " wins this round.");
+                	
+                	gameActive = false;
+                	level.endPlayer(player);
+                	newRound();
+                	
                 }
-                else if( !play1 && play2 )
-                {
-                    scores.incrementScoreForPlayer(2);
-                    gameActive = false;
-                    System.out.println("Player 2 wins this round.");
-                    level.endPlayer( 2 );
-                newRound();
-                }
-                else if( !play1 && !play2 )
-                {
+                //Both players killed each other.
+                else if(!play1 && !play2){
                     gameActive = false;
                     System.out.println("You killed each other.  No points.");
                     newRound();
                 }
+                
+                
+                
             }
             try
             {
