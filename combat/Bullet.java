@@ -179,13 +179,9 @@ public class Bullet extends Sprite {
 		Point barUpperLeft = barrierBox.getLocation();
 		Point barLowerRight = new Point(barUpperLeft.x + barrierBox.width,
 				barUpperLeft.y + barrierBox.height);
-		Point barUpperRight = new Point(barUpperLeft.x, barUpperLeft.y
-				+ barrierBox.height);
-		Point barLowerLeft = new Point(barUpperLeft.x + barrierBox.width,
-				barUpperLeft.y);
+	
 
-		Point[] ret = { barUpperLeft, barLowerRight, barUpperRight,
-				barLowerLeft };
+		Point[] ret = { barUpperLeft, barLowerRight};
 
 		return ret;
 	}
