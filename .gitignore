@@ -1,6 +1,22 @@
 *.class
+.classpath
+.project
+
+# lock files
+.~lock.*
 
 # Package Files #
 *.jar
 *.war
 *.ear
+
+# swap files
+*.swp
+
+# tags files, from ctags in vim
+tags
+
+# makefiles
+makefile
+Makefile
+
