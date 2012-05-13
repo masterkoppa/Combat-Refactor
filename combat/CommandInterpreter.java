@@ -54,6 +54,9 @@ public class CommandInterpreter extends JFrame implements KeyListener
 
     private int p1cmds[] = new int[5];        //array of commands for player 1
     private int p2cmds[] = new int[5];        //array of commands for player 2
+    
+    private KeyBinding p1cmdBinding;
+    private KeyBinding p2cmdBinding;
 
     /**
      * Private constructor in order to follow the singleton pattern of
@@ -85,18 +88,23 @@ public class CommandInterpreter extends JFrame implements KeyListener
         //get the key code for the event
         int code = e.getKeyCode();
         
-        //If the code belongs to player 1, set it as the command
-        for(int p1 : p1cmds){
-        	if(code == p1){
-        		p1Command = code;
-        	}
+        //determine if the key pressed is of interest and assign it to the
+        // correct player
+        if( (code == p1cmdBinding.getUpKey()) ||
+            (code == p1cmdBinding.getDownKey()) ||
+            (code == p1cmdBinding.getLeftKey()) ||
+            (code == p1cmdBinding.getRightKey()) ||
+            (code == p1cmdBinding.getFireKey()) )
+        {
+            p1Command = code;
         }
-        
-        //If the code belongs to player 2, set it as the command
-        for(int p2 : p2cmds){
-        	if(code == p2){
-        		p2Command = code;
-        	}
+        else if( (code == p2cmdBinding.getUpKey()) ||
+                 (code == p2cmdBinding.getDownKey()) ||
+                 (code == p2cmdBinding.getLeftKey()) ||
+                 (code == p2cmdBinding.getRightKey()) ||
+                 (code == p2cmdBinding.getFireKey()) )
+        {
+            p2Command = code;
         }
         
     }
@@ -143,17 +151,17 @@ public class CommandInterpreter extends JFrame implements KeyListener
      * @throws  IllegalArgumentException    If the player number is out of
      *                                      bounds.
      */
-    public void register( int playerNum, int[] cmds )
+    public void register( int playerNum, KeyBinding keys)
     {
     	System.out.println("Register "+playerNum+" with commands: ");
-    	for(int i = 0; i<cmds.length; i++)
+    	/*for(int i = 0; i<cmds.length; i++)
     	{
     		System.out.println("	"+i+": "+cmds[i]);
     	}
-    	System.out.println("");
+    	System.out.println("");*/
         //check the player number and assign the array accordingly
-        if( playerNum == 1 ) p1cmds = cmds; 
-        else if( playerNum == 2 ) p2cmds = cmds;
+        if( playerNum == 1 ) p1cmdBinding = keys; 
+        else if( playerNum == 2 ) p2cmdBinding = keys;
         else throw new IllegalArgumentException("Invalid player number.");
     }
 }

@@ -103,6 +103,8 @@ public class PlayerManager extends Thread implements Timed {
 
 	private static int BulletOffset = 40; // how i figure out where to place the
 											// bullet
+	
+	private KeyBinding cmdBinding;
 
 	/**
 	 * Starts this thread (a "life")
@@ -139,23 +141,18 @@ public class PlayerManager extends Thread implements Timed {
 	 * @param bullet
 	 *            my bullet object
 	 */
-	public PlayerManager(int playerNum, int up, int down, int right, int left,
-			int fire, Player player, Bullet bullet, CommandInterpreter ci) {
+	public PlayerManager(int playerNum, KeyBinding keys, Player player, Bullet bullet, CommandInterpreter ci) {
 		this.ci = ci;
 
 		// assign the key commands
-		cmds[0] = up;
-		cmds[1] = down;
-		cmds[2] = right;
-		cmds[3] = left;
-		cmds[4] = fire;
+		cmdBinding = keys;
 
 		// assign the player number for this instance of the PlayerManager
 		myNum = playerNum;
 		System.out.println("New PlayerManager for player " + playerNum);
 
 		// register with the CommandInterpreter
-		ci.register(myNum, cmds);
+		ci.register(myNum, keys);
 
 		// assign my player and bullet objects
 		myPlayer = player;
@@ -183,19 +180,19 @@ public class PlayerManager extends Thread implements Timed {
 		if (!(cmd == 0)) {
 			// determine if the key pressed is of interest and assign it to the
 			// correct player
-			if (cmd == cmds[0]) {
+			if (cmd == cmdBinding.getUpKey()) {
 				myPlayer.moveForward();
 				return true;
-			} else if (cmd == cmds[1]) {
+			} else if (cmd == cmdBinding.getDownKey()) {
 				myPlayer.moveBackward();
 				return true;
-			} else if (cmd == cmds[3]) {
+			} else if (cmd == cmdBinding.getLeftKey()) {
 				myPlayer.turnLeft();
 				return true;
-			} else if (cmd == cmds[2]) {
+			} else if (cmd == cmdBinding.getRightKey()) {
 				myPlayer.turnRight();
 				return true;
-			} else if (cmd == cmds[4]) {
+			} else if (cmd == cmdBinding.getFireKey()) {
 				shoot();
 
 			}
@@ -276,11 +273,11 @@ public class PlayerManager extends Thread implements Timed {
 	 * @param cmds
 	 *            [] Player's command array.
 	 */
-	public void setCommands(int[] cmds) {
+	public void setCommands(KeyBinding keys) {
 		// sets the commands i want to listen on; not used currently, would be
 		// useful if I could get the keyMapping correctly
-		this.cmds = cmds;
-		ci.register(myNum, cmds);
+		this.cmdBinding = keys;
+		ci.register(myNum, keys);
 	}
 
 	/**
