@@ -35,7 +35,7 @@ public class Test {
     public static void main( String[] argv ) {
       JFrame aframe = new JFrame();
       
-      KeyDialog testd = new KeyDialog( aframe );
+      KeyDialog testd = new KeyDialog( aframe, new PlayerManager(0, null, null, null, null), new PlayerManager(0, null, null, null, null) );
       
       aframe.setVisible(true);
       testd.setVisible(true);
