@@ -90,20 +90,9 @@ public class CommandInterpreter extends JFrame implements KeyListener
         
         //determine if the key pressed is of interest and assign it to the
         // correct player
-        if( (code == p1cmdBinding.getUpKey()) ||
-            (code == p1cmdBinding.getDownKey()) ||
-            (code == p1cmdBinding.getLeftKey()) ||
-            (code == p1cmdBinding.getRightKey()) ||
-            (code == p1cmdBinding.getFireKey()) )
-        {
+        if( p1cmdBinding.ownsKey(code)){
             p1Command = code;
-        }
-        else if( (code == p2cmdBinding.getUpKey()) ||
-                 (code == p2cmdBinding.getDownKey()) ||
-                 (code == p2cmdBinding.getLeftKey()) ||
-                 (code == p2cmdBinding.getRightKey()) ||
-                 (code == p2cmdBinding.getFireKey()) )
-        {
+        }else if(p1cmdBinding.ownsKey(code)){
             p2Command = code;
         }
         
