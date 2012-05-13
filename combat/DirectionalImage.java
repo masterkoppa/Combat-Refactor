@@ -89,17 +89,17 @@ public class DirectionalImage
     /**
      * Constants
      */
-    static public int Default = 0;
-    static public int North = 1;
-    static public int NorthEast = 2;
-    static public int East = 3;
-    static public int SouthEast = 4;
-    static public int South = 5;
-    static public int SouthWest = 6;
-    static public int West = 7;
-    static public int NorthWest = 8;
-    static public int Left = -1;
-    static public int Right = 1;
+    static final public int Default = 0;
+    static final public int North = 1;
+    static final public int NorthEast = 2;
+    static final public int East = 3;
+    static final public int SouthEast = 4;
+    static final public int South = 5;
+    static final public int SouthWest = 6;
+    static final public int West = 7;
+    static final public int NorthWest = 8;
+    static final public int Left = -1;
+    static final public int Right = 1;
 
     /**
      * The last location this image was at
