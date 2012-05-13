@@ -1,4 +1,5 @@
 package combat;
+
 /** 
  * @author DevC
  * @version $Id: PlayerManager.java,v 1.19 2012/04/08 03:50:18 DevA Exp $ 
@@ -87,204 +88,204 @@ package combat;
 
 import java.awt.*;
 
-public class PlayerManager extends Thread implements Timed
-{
-    private int myNum;               //the player number I am
-    private CommandInterpreter ci;   //the command interpreter form which I get
-                                     //keyboard events
+public class PlayerManager extends Thread implements Timed {
+	private int myNum; // the player number I am
+	private CommandInterpreter ci; // the command interpreter form which I get
+									// keyboard events
 
-    private Player myPlayer;         //the player object I control
-    private Bullet myBullet;         //the bullet object for the player
+	private Player myPlayer; // the player object I control
+	private Bullet myBullet; // the bullet object for the player
 
-    private int[] cmds = new int[5]; //my commands
+	private int[] cmds = new int[5]; // my commands
 
-    private boolean alive = true;    //indicates if i am alive
-    private boolean end = false;     //tells me when i've died
-    
-    private static int BulletOffset = 40; //how i figure out where to place the
-                                          //bullet
+	private boolean alive = true; // indicates if i am alive
+	private boolean end = false; // tells me when i've died
 
-    /**
-     * Starts this thread (a "life")
-     */
-    public void run() 
-    { 
-        //while I am alive...
-        while( myPlayer.isActive() && alive )
-        {
-            try {
-                Thread.sleep(100);
-            }
-            catch( InterruptedException e ){}
-        }
-        if( !end ) System.err.println("Player #"+myNum+" lost.");
-    }
-    
-    /**
-     * Constructor
-     * @param   playerNum   what player I am
-     * @param   up          key command for foreward
-     * @param   down        key command for backward
-     * @param   right       key command for right
-     * @param   left        key command for left
-     * @param   fire        key command for fire
-     * @param   player      my player object
-     * @param   bullet      my bullet object
-     */
-    public PlayerManager( int playerNum,
-                          int up, int down, int right, int left,
-                          int fire,
-                          Player player, Bullet bullet,
-                          CommandInterpreter ci)
-    {
-    	this.ci = ci;
-    	
-        //assign the key commands
-        cmds[0] = up;
-        cmds[1] = down;
-        cmds[2] = right;
-        cmds[3] = left;
-        cmds[4] = fire;
+	private static int BulletOffset = 40; // how i figure out where to place the
+											// bullet
 
-        //assign the player number for this instance of the PlayerManager 
-        myNum = playerNum;
-        System.out.println("New PlayerManager for player "+playerNum);
-        
-        //register with the CommandInterpreter
-        ci.register( myNum, cmds );
-        
-        //assign my player and bullet objects
-        myPlayer = player;
-        Rectangle tmp = myPlayer.getBoundingBox();
-        int x = tmp.width;
-        int y = tmp.height;
-        if( x > y ) BulletOffset = x + 1;
-        else BulletOffset = y + 1;
-        myBullet = bullet;
-}
+	/**
+	 * Starts this thread (a "life")
+	 */
+	public void run() {
+		// while I am alive...
+		while (myPlayer.isActive() && alive) {
+			try {
+				Thread.sleep(100);
+			} catch (InterruptedException e) {
+			}
+		}
+		if (!end)
+			System.err.println("Player #" + myNum + " lost.");
+	}
 
-    /**
-     * Sends a command to the player
-     * @return  True if a move was actually made.
-     */
-    private boolean move()
-    {
-        int cmd = 0;    //the command I got
-        boolean result = false;
-        
-        //get the command from the command interpreter
-        cmd = ci.getCommand( myNum );
-        
-        if( !( cmd == 0 ) )
-        {
-            //determine if the key pressed is of interest and assign it to the correct player
-            if( cmd == cmds[0] )
-            {
-                myPlayer.moveForward();
-                result = true;
-            }
-            else if( cmd == cmds[1] )
-            {
-                myPlayer.moveBackward();
-                result = true;
-            }
-            else if( cmd == cmds[3] )
-            {
-                myPlayer.turnLeft();
-                result = true;
-            }
-            else if( cmd == cmds[2] )
-            {
-                myPlayer.turnRight();
-                result = true;
-            }
-            else if( cmd == cmds[4] )
-            {
-                //get the location of my player
-                Point loc = myPlayer.getLocation();
-                
-                //Get the direction this player is going
-                int dir = myPlayer.getDirection();
-                Point bulletStart = loc;
-                
-                switch( dir )
-                {
-                    //start the bullet, giving it an offset enough so I'm not 
-                    //shooting myself
-                    case( 1 ):
-                        bulletStart = new Point( loc.x, loc.y-BulletOffset );
-                        break;
-                    case( 2 ):
-                        bulletStart = new Point( loc.x+BulletOffset, loc.y-BulletOffset );
-                        break;
-                    case( 3 ):
-                        bulletStart = new Point( loc.x+BulletOffset, loc.y );
-                        break;
-                    case( 4 ):
-                        bulletStart = new Point( loc.x+BulletOffset, loc.y+BulletOffset );
-                        break;
-                    case( 5 ):
-                        bulletStart = new Point( loc.x, loc.y+BulletOffset );
-                        break;
-                    case( 6 ):
-                        bulletStart = new Point( loc.x-BulletOffset, loc.y+BulletOffset );
-                        break;
-                    case( 7 ):
-                        bulletStart = new Point( loc.x-BulletOffset, loc.y );
-                        break;
-                    case( 8 ):
-                        bulletStart = new Point( loc.x-BulletOffset, loc.y-BulletOffset );
-                        break;
-                    default:
-                }
-                
-                //place the bullet on the screen
-                myBullet.place( bulletStart, dir );
-            }
-            
-            else {}
-        }
-        
-        return result;
-    }
+	/**
+	 * Constructor
+	 * 
+	 * @param playerNum
+	 *            what player I am
+	 * @param up
+	 *            key command for foreward
+	 * @param down
+	 *            key command for backward
+	 * @param right
+	 *            key command for right
+	 * @param left
+	 *            key command for left
+	 * @param fire
+	 *            key command for fire
+	 * @param player
+	 *            my player object
+	 * @param bullet
+	 *            my bullet object
+	 */
+	public PlayerManager(int playerNum, int up, int down, int right, int left,
+			int fire, Player player, Bullet bullet, CommandInterpreter ci) {
+		this.ci = ci;
 
-    /**
-     * Here for the implementation of the Timed interface.
-     */
-    public void pretick(){}
+		// assign the key commands
+		cmds[0] = up;
+		cmds[1] = down;
+		cmds[2] = right;
+		cmds[3] = left;
+		cmds[4] = fire;
 
-    /**
-     * Here for the implementation of the Timed interface;
-     * controls the movement of the Player.
-     */
-    public void tick()
-    {
-        //on a tick, move the bullet foreward and make sure i repaint myself
-        myBullet.moveForward();
-        if( !move() )
-        myPlayer.stay();
-    }
-    
-   /**
-    * Allows Game to set the commands for this player
-    * @param cmds[] Player's command array.
-    */
-    public void setCommands( int[] cmds )
-    {
-        //sets the commands i want to listen on; not used currently, would be 
-        //useful if I could get the keyMapping correctly
-        this.cmds = cmds;
-        ci.register( myNum, cmds );
-    }
+		// assign the player number for this instance of the PlayerManager
+		myNum = playerNum;
+		System.out.println("New PlayerManager for player " + playerNum);
 
-    /**
-     * Ends this PlayerManager
-     */
-    public void end()
-    {
-        //indicate that I am dead
-        myPlayer.end();
-        alive = false;
-        end = true;
-    }
+		// register with the CommandInterpreter
+		ci.register(myNum, cmds);
+
+		// assign my player and bullet objects
+		myPlayer = player;
+		Rectangle tmp = myPlayer.getBoundingBox();
+		int x = tmp.width;
+		int y = tmp.height;
+		if (x > y)
+			BulletOffset = x + 1;
+		else
+			BulletOffset = y + 1;
+		myBullet = bullet;
+	}
+
+	/**
+	 * Sends a command to the player
+	 * 
+	 * @return True if a move was actually made.
+	 */
+	private boolean move() {
+		int cmd = 0; // the command I got
+
+		// get the command from the command interpreter
+		cmd = ci.getCommand(myNum);
+
+		if (!(cmd == 0)) {
+			// determine if the key pressed is of interest and assign it to the
+			// correct player
+			if (cmd == cmds[0]) {
+				myPlayer.moveForward();
+				return true;
+			} else if (cmd == cmds[1]) {
+				myPlayer.moveBackward();
+				return true;
+			} else if (cmd == cmds[3]) {
+				myPlayer.turnLeft();
+				return true;
+			} else if (cmd == cmds[2]) {
+				myPlayer.turnRight();
+				return true;
+			} else if (cmd == cmds[4]) {
+				shoot();
+
+			}
+
+			else {
+			}
+		}
+
+		return false;
+	}
+
+	private void shoot() {
+		// get the location of my player
+		Point loc = myPlayer.getLocation();
+
+		// Get the direction this player is going
+		int dir = myPlayer.getDirection();
+		Point bulletStart = loc;
+
+		switch (dir) {
+		// start the bullet, giving it an offset enough so I'm not
+		// shooting myself
+		case (1):
+			bulletStart = new Point(loc.x, loc.y - BulletOffset);
+			break;
+		case (2):
+			bulletStart = new Point(loc.x + BulletOffset, loc.y - BulletOffset);
+			break;
+		case (3):
+			bulletStart = new Point(loc.x + BulletOffset, loc.y);
+			break;
+		case (4):
+			bulletStart = new Point(loc.x + BulletOffset, loc.y + BulletOffset);
+			break;
+		case (5):
+			bulletStart = new Point(loc.x, loc.y + BulletOffset);
+			break;
+		case (6):
+			bulletStart = new Point(loc.x - BulletOffset, loc.y + BulletOffset);
+			break;
+		case (7):
+			bulletStart = new Point(loc.x - BulletOffset, loc.y);
+			break;
+		case (8):
+			bulletStart = new Point(loc.x - BulletOffset, loc.y - BulletOffset);
+			break;
+		default:
+		}
+
+		// place the bullet on the screen
+		myBullet.place(bulletStart, dir);
+	}
+
+	/**
+	 * Here for the implementation of the Timed interface.
+	 */
+	public void pretick() {
+	}
+
+	/**
+	 * Here for the implementation of the Timed interface; controls the movement
+	 * of the Player.
+	 */
+	public void tick() {
+		// on a tick, move the bullet foreward and make sure i repaint myself
+		myBullet.moveForward();
+		if (!move())
+			myPlayer.stay();
+	}
+
+	/**
+	 * Allows Game to set the commands for this player
+	 * 
+	 * @param cmds
+	 *            [] Player's command array.
+	 */
+	public void setCommands(int[] cmds) {
+		// sets the commands i want to listen on; not used currently, would be
+		// useful if I could get the keyMapping correctly
+		this.cmds = cmds;
+		ci.register(myNum, cmds);
+	}
+
+	/**
+	 * Ends this PlayerManager
+	 */
+	public void end() {
+		// indicate that I am dead
+		myPlayer.end();
+		alive = false;
+		end = true;
+	}
 }
