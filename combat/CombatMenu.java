@@ -107,15 +107,12 @@ public class CombatMenu extends JPanel {
         pause.setFocusable(false);
         JButton resume = new JButton( "Resume Game" );
         resume.setFocusable(false);
-        // resume.setEnabled( false );
         pause.addActionListener(
             new ActionListener()
             {
                 public void actionPerformed( ActionEvent e )
                 {
                     theGame.pause();
-                    // resume.setEnabled( true );
-                    // pause.setEnabled( false );
                 }
             }
         );
