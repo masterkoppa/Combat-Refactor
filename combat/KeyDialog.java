@@ -50,17 +50,17 @@ public class KeyDialog extends JDialog
     private KeyBinding playerTwoKeys;
     
     JPanel mainPanel;
+    private PlayerManager playerManagerOne;
+    private PlayerManager playerManagerTwo;
     
     /**
      * Creates this dialog.
      * @param   mainFrame   The frame of the game (which I am part of).
      */
-    public KeyDialog( JFrame mainFrame, KeyBinding playerOneKeys, KeyBinding playerTwoKeys )
+    public KeyDialog( JFrame mainFrame )
     {
         //call the parent constructor 
         super( mainFrame, "Key Mapping" );
-        this.playerOneKeys = playerOneKeys;
-        this.playerTwoKeys = playerTwoKeys;
         
         //fill the frame with the fields, and then construct it
         createDialog();
@@ -69,12 +69,15 @@ public class KeyDialog extends JDialog
     /**
      * Handles building the dialog box.
      */
-    public void createDialog( )
+    public void createDialog( PlayerManager playerManagerOne, PlayerManager PlayerManagerTwo )
     {
+        this.playerManagerOne = playerManagerOne;
+        this.playerManagerTwo = PlayerManagerTwo;
+                        
         //create the components and add them to the panel
-        mainPanel = new JPanel();
+        mainPanel = new JPanel( );
         
-        setupInitialKeys();
+        setupInitialKeys( playerManagerOne.getCommands(), PlayerManagerTwo.getCommands() );
         
         mainPanel.setLayout( new GridLayout( 6, 3 ) );
         
@@ -122,9 +125,14 @@ public class KeyDialog extends JDialog
 
     /**
      * Sets the KeyBox to the key bindings being used in the game.
+     * @param keyBinding2 
+     * @param keyBinding 
      */
-    private void setupInitialKeys()
+    private void setupInitialKeys(KeyBinding playerOneKeys, KeyBinding playerTwoKeys)
     {
+        this.playerOneKeys = playerOneKeys;
+        this.playerTwoKeys = playerTwoKeys;
+        
         p1Up = new KeyBox();
         p1Up.setKeyCode(playerOneKeys.getUpKey());
         
@@ -163,19 +171,24 @@ public class KeyDialog extends JDialog
         public void actionPerformed( ActionEvent e )
         {
             System.out.println( "ok button pressed " );
-            //now we have to assign the commands
-            
-            playerOneKeys.setUpKey(p1Up.getKeyCode()); //This is how keys are set back.
+
+            //Set the player one key bindings from the key boxes components
+            playerOneKeys.setUpKey(p1Up.getKeyCode()); 
             playerOneKeys.setDownKey(p1Down.getKeyCode());
             playerOneKeys.setRightKey(p1Right.getKeyCode());
             playerOneKeys.setLeftKey(p1Left.getKeyCode());
             playerOneKeys.setFireKey(p1Fire.getKeyCode());
 
+            //Set the player two key bindings from the boxes components 
             playerTwoKeys.setUpKey(p2Up.getKeyCode());
             playerTwoKeys.setDownKey(p2Down.getKeyCode());
             playerTwoKeys.setRightKey(p2Right.getKeyCode());
             playerTwoKeys.setLeftKey(p2Left.getKeyCode());
             playerTwoKeys.setFireKey(p2Fire.getKeyCode());
+            
+            //Set the players bindings back to the player managers
+            playerManagerOne.setCommands(playerOneKeys);
+            playerManagerTwo.setCommands(playerTwoKeys);
         }
     }
 
