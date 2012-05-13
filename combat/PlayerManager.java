@@ -207,6 +207,10 @@ public class PlayerManager extends Thread implements Timed {
 		return false;
 	}
 
+	/**
+	 * Make current player shoot. This is a helper method to be used 
+	 * together with the move() method
+	 */
 	private void shoot() {
 		// get the location of my player
 		Point loc = myPlayer.getLocation();
