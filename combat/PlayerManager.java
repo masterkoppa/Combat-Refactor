@@ -279,6 +279,10 @@ public class PlayerManager extends Thread implements Timed {
 		this.cmdBinding = keys;
 		ci.register(myNum, keys);
 	}
+	
+	public KeyBinding getCommands() {
+		return this.cmdBinding;
+	}
 
 	/**
 	 * Ends this PlayerManager
