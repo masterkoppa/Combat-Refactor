@@ -198,36 +198,32 @@ public class Bullet extends Sprite {
 		case DirectionalImage.NorthWest:
 			if (bulUpperLeft.x <= barLowerRight.x) {
 				image.setDirection(DirectionalImage.SouthWest);
-			} else if ((bulUpperLeft.y <= barLowerRight.y)) {
+			} else{
 				image.setDirection(DirectionalImage.NorthEast);
 			}
 			break;
 		case DirectionalImage.NorthEast:
 			if ((bulUpperLeft.x >= barLowerRight.x)) {
 				image.setDirection(DirectionalImage.SouthEast);
-			} else if ((bulLowerRight.y >= barUpperLeft.y)) {
+			} else{
 				image.setDirection(DirectionalImage.NorthWest);
 			}
 			break;
 		case DirectionalImage.SouthWest:
 			if ((bulLowerRight.x <= barUpperLeft.x)) {
 				image.setDirection(DirectionalImage.NorthWest);
-			} else if ((bulUpperLeft.y <= barLowerRight.y)) {
+			} else{
 				image.setDirection(DirectionalImage.SouthEast);
 			}
 			break;
 		case DirectionalImage.SouthEast:
 			if ((bulLowerRight.x >= barUpperLeft.x)) {
 				image.setDirection(DirectionalImage.NorthEast);
-			} else if ((bulLowerRight.y >= barUpperLeft.y)) {
+			} else {
 				image.setDirection(DirectionalImage.SouthWest);
 			}
 		}
 
-		// If the direction didn't change show an error
-		if (dir == image.getDirection()) {
-			System.err.println("Error in clonflict");
-		}
 	}
 
 	/**
