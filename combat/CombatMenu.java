@@ -33,6 +33,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
+import combat.KeyDialog;
+
 /**
  * This class start up the game.  It puts together the GUI and instantiates
  * the main classes and links them together.
@@ -100,7 +102,19 @@ public class CombatMenu extends JPanel {
         // Build the button that will set the key commands.
         JButton setKeys = new JButton( "Set Keys" );
         setKeys.setFocusable(false);
+        
         // Add an ActionListener here when we get that ready.
+        final KeyDialog k = new KeyDialog(new JFrame());
+        k.setVisible(false);
+        setKeys.addActionListener(
+            new ActionListener()
+            {
+                public void actionPerformed( ActionEvent e )
+                {
+                    k.setVisible(true);
+                }
+            }
+        );
         
         // Build the buttons that will control pausing and unpausing the game.
         JButton pause = new JButton( "Pause Game" );
