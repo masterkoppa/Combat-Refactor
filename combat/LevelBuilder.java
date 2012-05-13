@@ -182,14 +182,26 @@ public class LevelBuilder
         
         switch(playerID)
         {
-            case 1:  player1 = new PlayerManager( 1, KeyEvent.VK_W, 
-                KeyEvent.VK_Z, KeyEvent.VK_D, KeyEvent.VK_A, 
-                KeyEvent.VK_Q, player, bullet, ci );
+            case 1:  
+            	KeyBinding p1Keys = new KeyBinding();
+            	p1Keys.setUpKey(KeyEvent.VK_W);
+            	p1Keys.setDownKey(KeyEvent.VK_Z);
+            	p1Keys.setLeftKey(KeyEvent.VK_A);
+            	p1Keys.setRightKey(KeyEvent.VK_D);
+            	p1Keys.setFireKey(KeyEvent.VK_Q);
+            	
+            	player1 = new PlayerManager( 1,p1Keys,player, bullet, ci );
                 player1.start();
                 break;
-            case 2:  player2 = new PlayerManager( 2, KeyEvent.VK_UP, 
-                KeyEvent.VK_DOWN, KeyEvent.VK_RIGHT, KeyEvent.VK_LEFT, 
-                KeyEvent.VK_SHIFT, player, bullet, ci );
+            case 2:  
+            	
+            	KeyBinding p2Keys = new KeyBinding();
+            	p2Keys.setUpKey(KeyEvent.VK_UP);
+            	p2Keys.setDownKey(KeyEvent.VK_DOWN);
+            	p2Keys.setLeftKey(KeyEvent.VK_LEFT);
+            	p2Keys.setRightKey(KeyEvent.VK_RIGHT);
+            	p2Keys.setFireKey(KeyEvent.VK_SHIFT);
+            	player2 = new PlayerManager( 2, p2Keys, player, bullet, ci );
                 player2.start();
                 break;
             default:
