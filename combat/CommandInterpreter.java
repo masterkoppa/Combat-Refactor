@@ -51,9 +51,6 @@ public class CommandInterpreter extends JFrame implements KeyListener
 
     private int p1Command = 0;                //player 1's current command
     private int p2Command = 0;                //player 2's current command
-
-    private int p1cmds[] = new int[5];        //array of commands for player 1
-    private int p2cmds[] = new int[5];        //array of commands for player 2
     
     private KeyBinding p1cmdBinding;
     private KeyBinding p2cmdBinding;
