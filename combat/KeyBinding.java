@@ -2,41 +2,49 @@ package combat;
 
 public class KeyBinding {
 	
-	private Integer upKey;
-	private Integer downKey;
-	private Integer leftKey;
-	private Integer rightKey;
-	private Integer fireKey;
+	private int upKey;
+	private int downKey;
+	private int leftKey;
+	private int rightKey;
+	private int fireKey;
 	
-	public Integer getUpKey() {
+	public int getUpKey() {
 		return upKey;
 	}
-	public void setUpKey(Integer upKey) {
+	public void setUpKey(int upKey) {
 		this.upKey = upKey;
 	}
-	public Integer getDownKey() {
+	public int getDownKey() {
 		return downKey;
 	}
-	public void setDownKey(Integer downKey) {
+	public void setDownKey(int downKey) {
 		this.downKey = downKey;
 	}
-	public Integer getLeftKey() {
+	public int getLeftKey() {
 		return leftKey;
 	}
-	public void setLeftKey(Integer leftKey) {
+	public void setLeftKey(int leftKey) {
 		this.leftKey = leftKey;
 	}
-	public Integer getRightKey() {
+	public int getRightKey() {
 		return rightKey;
 	}
-	public void setRightKey(Integer rightKey) {
+	public void setRightKey(int rightKey) {
 		this.rightKey = rightKey;
 	}
-	public Integer getFireKey() {
+	public int getFireKey() {
 		return fireKey;
 	}
-	public void setFireKey(Integer fireKey) {
+	public void setFireKey(int fireKey) {
 		this.fireKey = fireKey;
+	}
+	
+	public boolean ownsKey(int keyCode){
+		if(upKey == keyCode || downKey == keyCode || leftKey == keyCode || rightKey == keyCode || fireKey == keyCode){
+			return true;
+		}else{
+			return false;
+		}
 	}
 
 }
