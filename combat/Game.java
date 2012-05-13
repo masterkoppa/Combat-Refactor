@@ -143,10 +143,10 @@ public class Game extends JPanel implements Timed, Runnable {
         this.ci = ci;
         
         combat = true;
-        level = null;
         this.timer = timer;
         timer.addTimed(this);
         levelFile = new String( "level1.lvl" );
+        level = new LevelBuilder(levelFile, scoreboard, ci);
         gameActive = false;
         scores = scoreboard;
         timer.start();
