@@ -46,6 +46,8 @@ public class KeyDialog extends JDialog
     KeyBox p2Right;
     KeyBox p2Left;
     KeyBox p2Fire;
+    private KeyBinding playerOneKeys;
+    private KeyBinding playerTwoKeys;
     
     JPanel mainPanel;
     
@@ -53,10 +55,12 @@ public class KeyDialog extends JDialog
      * Creates this dialog.
      * @param   mainFrame   The frame of the game (which I am part of).
      */
-    public KeyDialog( JFrame mainFrame )
+    public KeyDialog( JFrame mainFrame, KeyBinding playerOneKeys, KeyBinding playerTwoKeys )
     {
         //call the parent constructor 
         super( mainFrame, "Key Mapping" );
+        this.playerOneKeys = playerOneKeys;
+        this.playerTwoKeys = playerTwoKeys;
         
         //fill the frame with the fields, and then construct it
         createDialog();
@@ -70,17 +74,7 @@ public class KeyDialog extends JDialog
         //create the components and add them to the panel
         mainPanel = new JPanel();
         
-        p1Up = new KeyBox();
-        p1Down = new KeyBox();
-        p1Right = new KeyBox();
-        p1Left = new KeyBox();
-        p1Fire = new KeyBox();
-        
-        p2Up = new KeyBox();
-        p2Down = new KeyBox();
-        p2Right = new KeyBox();
-        p2Left = new KeyBox();
-        p2Fire = new KeyBox();
+        setupInitialKeys();
         
         mainPanel.setLayout( new GridLayout( 6, 3 ) );
         
@@ -126,6 +120,42 @@ public class KeyDialog extends JDialog
         paint( getGraphics() ); 
     }
 
+    /**
+     * Sets the KeyBox to the key bindings being used in the game.
+     */
+    private void setupInitialKeys()
+    {
+        p1Up = new KeyBox();
+        p1Up.setKeyCode(playerOneKeys.getUpKey());
+        
+        p1Down = new KeyBox();
+        p1Down.setKeyCode(playerOneKeys.getDownKey());
+        
+        p1Right = new KeyBox();
+        p1Right.setKeyCode(playerOneKeys.getRightKey());
+        
+        p1Left = new KeyBox();
+        p1Left.setKeyCode(playerOneKeys.getLeftKey());
+        
+        p1Fire = new KeyBox();
+        p1Fire.setKeyCode(playerOneKeys.getFireKey());
+        
+        p2Up = new KeyBox();
+        p2Up.setKeyCode(playerTwoKeys.getUpKey());
+        
+        p2Down = new KeyBox();
+        p2Down.setKeyCode(playerTwoKeys.getDownKey());
+        
+        p2Right = new KeyBox();
+        p2Right.setKeyCode(playerTwoKeys.getRightKey());
+        
+        p2Left = new KeyBox();
+        p2Left.setKeyCode(playerTwoKeys.getLeftKey());
+        
+        p2Fire = new KeyBox();
+        p2Fire.setKeyCode(playerTwoKeys.getFireKey());
+    }
+
     public class OKButtonListener implements ActionListener
     {    
         public OKButtonListener(){}
@@ -134,20 +164,18 @@ public class KeyDialog extends JDialog
         {
             System.out.println( "ok button pressed " );
             //now we have to assign the commands
-            int[] p1 = new int[5];
-            int[] p2 = new int[5];
             
-            p1[0] = p1Up.getKeyCode(); 
-            p1[1] = p1Down.getKeyCode();
-            p1[2] = p1Left.getKeyCode();
-            p1[3] = p1Right.getKeyCode();
-            p1[4] = p1Fire.getKeyCode();
-            
-            p1[0] = p1Up.getKeyCode();
-            p1[1] = p1Down.getKeyCode();
-            p1[2] = p1Left.getKeyCode();
-            p1[3] = p1Right.getKeyCode();
-            p1[4] = p1Fire.getKeyCode();
+            playerOneKeys.setUpKey(p1Up.getKeyCode()); //This is how keys are set back.
+            playerOneKeys.setDownKey(p1Down.getKeyCode());
+            playerOneKeys.setRightKey(p1Right.getKeyCode());
+            playerOneKeys.setLeftKey(p1Left.getKeyCode());
+            playerOneKeys.setFireKey(p1Fire.getKeyCode());
+
+            playerTwoKeys.setUpKey(p2Up.getKeyCode());
+            playerTwoKeys.setDownKey(p2Down.getKeyCode());
+            playerTwoKeys.setRightKey(p2Right.getKeyCode());
+            playerTwoKeys.setLeftKey(p2Left.getKeyCode());
+            playerTwoKeys.setFireKey(p2Fire.getKeyCode());
         }
     }
 
