@@ -137,7 +137,7 @@ public class Game extends JPanel implements Timed, Runnable {
      * Initializes the game time keeper.
      * @param	timer	The TimeManager for the game.
      */
-    public Game( TimeManager timer, Scoreboard scoreboard, CommandInterpreter ci )
+    public Game( TimeManager timer, Scoreboard scoreboard, CommandInterpreter ci)
     {
         setFocusable(true);
         this.ci = ci;
@@ -250,6 +250,16 @@ public class Game extends JPanel implements Timed, Runnable {
                 timer.pause();
             }
         }
+    }
+    
+    public PlayerManager getPlayer1()
+    {
+    	return this.level.player1;
+    }
+    
+    public PlayerManager getPlayer2()
+    {
+    	return this.level.player2;
     }
 
     /**
