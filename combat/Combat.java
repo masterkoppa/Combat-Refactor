@@ -102,7 +102,22 @@ public class Combat {
         
         // Create the scoreboard and command listener objects needed by the game.
         Scoreboard sb = new Scoreboard();
-        CommandInterpreter ci = new CommandInterpreter();
+        
+        KeyBinding p1Keys = new KeyBinding();
+    	p1Keys.setUpKey(KeyEvent.VK_W);
+    	p1Keys.setDownKey(KeyEvent.VK_Z);
+    	p1Keys.setLeftKey(KeyEvent.VK_A);
+    	p1Keys.setRightKey(KeyEvent.VK_D);
+    	p1Keys.setFireKey(KeyEvent.VK_Q);
+    	
+    	KeyBinding p2Keys = new KeyBinding();
+    	p2Keys.setUpKey(KeyEvent.VK_UP);
+    	p2Keys.setDownKey(KeyEvent.VK_DOWN);
+    	p2Keys.setLeftKey(KeyEvent.VK_LEFT);
+    	p2Keys.setRightKey(KeyEvent.VK_RIGHT);
+    	p2Keys.setFireKey(KeyEvent.VK_SHIFT);
+    	
+        CommandInterpreter ci = new CommandInterpreter(p1Keys, p2Keys);
         
         //attempt to load the game by creatign a time manager &
         //game obejct, which gets started.
