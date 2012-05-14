@@ -124,16 +124,8 @@ public class PlayerManager extends Thread implements Timed {
 	 * 
 	 * @param playerNum
 	 *            what player I am
-	 * @param up
-	 *            key command for foreward
-	 * @param down
-	 *            key command for backward
-	 * @param right
-	 *            key command for right
-	 * @param left
-	 *            key command for left
-	 * @param fire
-	 *            key command for fire
+	 * @param keys
+	 *            Key bindings for the player
 	 * @param player
 	 *            my player object
 	 * @param bullet
