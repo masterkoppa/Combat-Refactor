@@ -65,14 +65,18 @@ public class KeyBox extends JTextField
     public class TFListener implements KeyListener
     {
         public TFListener(){}        
-        public void keyPressed( KeyEvent e ){}
+        public void keyPressed( KeyEvent e ){
+            int kc = e.getKeyCode();
+            System.out.println("keyCode = " + e.getKeyCode());
+            setKeyCode(kc);
+        }
         public void keyReleased( KeyEvent e ){}
         
         public void keyTyped( KeyEvent e )
         {
-            char kc = e.getKeyChar();
-            System.out.println( e.getKeyCode() );
-            setKeyCode( kc );
+            //char kc = e.getKeyChar();
+            //System.out.println( e.getKeyCode() );
+            //setKeyCode( kc );
         }
     }
     
