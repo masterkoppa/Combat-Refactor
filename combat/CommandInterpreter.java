@@ -59,11 +59,13 @@ public class CommandInterpreter extends JFrame implements KeyListener
      * Private constructor in order to follow the singleton pattern of
      * creation.
      */
-    public CommandInterpreter()
+    public CommandInterpreter(KeyBinding p1keyBindings, KeyBinding p2keyBindings)
     {
         //creation and setup for the main window for the system.
         super( "COMBAT!" );
         System.err.println("Creating the first command interpreter.");
+        this.register(1, p1keyBindings);
+        this.register(2,p2keyBindings);
     }
 
     /**
@@ -130,6 +132,19 @@ public class CommandInterpreter extends JFrame implements KeyListener
         }
         
         return response;   
+    }
+    
+    /**
+     * Method to get the current key bindings
+     * @param playerNum
+     * @return
+     */
+    public KeyBinding getKeyBindings(int playerNum)
+    {
+    	if(playerNum == 1)
+    		return p1cmdBinding;
+    	else
+    		return p2cmdBinding;
     }
     
     /**

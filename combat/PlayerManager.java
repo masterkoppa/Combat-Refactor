@@ -166,6 +166,7 @@ public class PlayerManager extends Thread implements Timed {
 
 		// get the command from the command interpreter
 		cmd = ci.getCommand(myNum);
+		this.cmdBinding = ci.getKeyBindings(myNum);
 
 		if (!(cmd == 0)) {
 			// determine if the key pressed is of interest and assign it to the
