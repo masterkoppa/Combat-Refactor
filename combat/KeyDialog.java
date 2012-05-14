@@ -50,20 +50,18 @@ public class KeyDialog extends JDialog
     private KeyBinding playerTwoKeys;
     
     JPanel mainPanel;
-    private PlayerManager playerManagerOne;
-    private PlayerManager playerManagerTwo;
+    private final CommandInterpreter theCi;
     
     /**
      * Creates this dialog.
      * @param   mainFrame   The frame of the game (which I am part of).
      */
-    public KeyDialog( JFrame mainFrame, PlayerManager playerManagerOne, PlayerManager PlayerManagerTwo )
+    public KeyDialog( JFrame mainFrame, CommandInterpreter ci)
     {
         //call the parent constructor 
         super( mainFrame, "Key Mapping" );
         
-        this.playerManagerOne = playerManagerOne;
-        this.playerManagerTwo = PlayerManagerTwo;
+        this.theCi = ci;
         
         //fill the frame with the fields, and then construct it
         this.createDialog();
@@ -78,8 +76,7 @@ public class KeyDialog extends JDialog
         mainPanel = new JPanel( );
         
         //Loads the current key bindings into the key dialog
-        setupInitialKeys( this.playerManagerOne.getCommands(), 
-                this.playerManagerTwo.getCommands() );
+        setupInitialKeys(this.theCi.getKeyBindings(1), this.theCi.getKeyBindings(2));
         
         mainPanel.setLayout( new GridLayout( 6, 3 ) );
         
@@ -189,8 +186,8 @@ public class KeyDialog extends JDialog
             playerTwoKeys.setFireKey(p2Fire.getKeyCode());
             
             //Set the players bindings back to the player managers
-            playerManagerOne.setCommands(playerOneKeys);
-            playerManagerTwo.setCommands(playerTwoKeys);
+            theCi.register(1, playerOneKeys);
+            theCi.register(2, playerTwoKeys);
         }
     }
 
