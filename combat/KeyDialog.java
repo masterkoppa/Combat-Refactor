@@ -55,6 +55,7 @@ public class KeyDialog extends JDialog
     /**
      * Creates this dialog.
      * @param   mainFrame   The frame of the game (which I am part of).
+     * @param 	ci			The CommandInterpreter from which to get key bindings 
      */
     public KeyDialog( JFrame mainFrame, CommandInterpreter ci)
     {
