@@ -24,6 +24,7 @@ package combat;
  */
 
 import java.awt.event.*;
+
 import javax.swing.*;
 
 public class KeyBox extends JButton
@@ -40,6 +41,14 @@ public class KeyBox extends JButton
     {
         super();
         addKeyListener( new TFListener() );
+        addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				KeyBox.this.setText("...");
+			}
+        	
+        });
     }
       
     /**
@@ -57,8 +66,9 @@ public class KeyBox extends JButton
     public void setKeyCode( int keyCode ){
         this.keyCode = keyCode;
         setText( KeyEvent.getKeyText(keyCode) );
+        this.setSelected(false);
     }
-
+    
 
     public class TFListener implements KeyListener{
         public TFListener(){}
