@@ -77,7 +77,9 @@ public class KeyDialog extends JDialog
         //create the components and add them to the panel
         mainPanel = new JPanel( );
         
-        setupInitialKeys( this.playerManagerOne.getCommands(), this.playerManagerTwo.getCommands() );
+        //Loads the current key bindings into the key dialog
+        setupInitialKeys( this.playerManagerOne.getCommands(), 
+                this.playerManagerTwo.getCommands() );
         
         mainPanel.setLayout( new GridLayout( 6, 3 ) );
         
@@ -125,8 +127,8 @@ public class KeyDialog extends JDialog
 
     /**
      * Sets the KeyBox to the key bindings being used in the game.
-     * @param keyBinding2 
-     * @param keyBinding 
+     * @param playerOneKeys 
+     * @param playerTwoKeys 
      */
     private void setupInitialKeys(KeyBinding playerOneKeys, KeyBinding playerTwoKeys)
     {
