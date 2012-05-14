@@ -191,6 +191,8 @@ public class KeyDialog extends JDialog
             //Set the players bindings back to the player managers
             playerManagerOne.setCommands(playerOneKeys);
             playerManagerTwo.setCommands(playerTwoKeys);
+
+            dispose();
         }
     }
 
@@ -199,7 +201,7 @@ public class KeyDialog extends JDialog
         public CancelButtonListener() {}
         
         public void actionPerformed( ActionEvent e ){
-            setVisible( false );
+            dispose();
         }
     }
 
