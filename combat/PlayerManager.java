@@ -96,8 +96,6 @@ public class PlayerManager extends Thread implements Timed {
 	private Player myPlayer; // the player object I control
 	private Bullet myBullet; // the bullet object for the player
 
-	private int[] cmds = new int[5]; // my commands
-
 	private boolean alive = true; // indicates if i am alive
 	private boolean end = false; // tells me when i've died
 
@@ -126,16 +124,8 @@ public class PlayerManager extends Thread implements Timed {
 	 * 
 	 * @param playerNum
 	 *            what player I am
-	 * @param up
-	 *            key command for foreward
-	 * @param down
-	 *            key command for backward
-	 * @param right
-	 *            key command for right
-	 * @param left
-	 *            key command for left
-	 * @param fire
-	 *            key command for fire
+	 * @param keys
+	 *            Key bindings for the player
 	 * @param player
 	 *            my player object
 	 * @param bullet
