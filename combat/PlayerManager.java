@@ -96,8 +96,6 @@ public class PlayerManager extends Thread implements Timed {
 	private Player myPlayer; // the player object I control
 	private Bullet myBullet; // the bullet object for the player
 
-	private int[] cmds = new int[5]; // my commands
-
 	private boolean alive = true; // indicates if i am alive
 	private boolean end = false; // tells me when i've died
 
