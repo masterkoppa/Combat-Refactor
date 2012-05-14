@@ -201,6 +201,7 @@ public class Game extends JPanel implements Timed, Runnable {
           +" on the new level.");
         gameActive = false;
         levelFile = filename;
+        newGame();
     }
 
     /**
