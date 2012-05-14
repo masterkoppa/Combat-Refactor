@@ -35,6 +35,7 @@ Player [x_pos] [y_pos] [default_player_image] [north] [north_east] [east] [south
 * bullet - The image representing the bullet being shot by this player.
 
 The starting position is for the top left corner of the player.
+If a player is included all image files must be included.
 
 Barrier
 =======
