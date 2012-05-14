@@ -26,7 +26,7 @@ package combat;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class KeyBox extends JTextField
+public class KeyBox extends JButton
 {
 	private static final long serialVersionUID = -1;
    
@@ -46,8 +46,7 @@ public class KeyBox extends JTextField
      * Gets the key code for the value in the box.
      * @return  KeyCode
      */
-    public int getKeyCode()
-    {
+    public int getKeyCode(){
         return keyCode;
     }
     
@@ -55,16 +54,14 @@ public class KeyBox extends JTextField
      * Sets the key code for the value in the box.
      * @param   KeyCode     The key code value.
      */
-    public void setKeyCode( int keyCode )
-    {
+    public void setKeyCode( int keyCode ){
         this.keyCode = keyCode;
-        setText( (new Integer(keyCode)).toString() );
+        setText( KeyEvent.getKeyText(keyCode) );
     }
 
 
-    public class TFListener implements KeyListener
-    {
-        public TFListener(){}        
+    public class TFListener implements KeyListener{
+        public TFListener(){}
         public void keyPressed( KeyEvent e ){
             int kc = e.getKeyCode();
             System.out.println("keyCode = " + e.getKeyCode());
