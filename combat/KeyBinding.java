@@ -1,5 +1,8 @@
 package combat;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public class KeyBinding {
 
 	private int upKey;
@@ -55,6 +58,26 @@ public class KeyBinding {
 		} else {
 			return false;
 		}
+	}
+	
+	public boolean checkForConflict(KeyBinding keyBinding){
+		List<Integer> keyCodes = keyBinding.getKeyCodes();
+		for(Integer keyCode : keyCodes){
+			if(ownsKey(keyCode)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public List<Integer> getKeyCodes(){
+		List<Integer> keyCodes = new ArrayList<Integer>();
+		keyCodes.add(upKey);
+		keyCodes.add(downKey);
+		keyCodes.add(leftKey);
+		keyCodes.add(rightKey);
+		keyCodes.add(fireKey);
+		return keyCodes;
 	}
 
 }

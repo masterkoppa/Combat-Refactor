@@ -31,6 +31,7 @@ package combat;
 import java.awt.event.*;
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.JOptionPane;
 
 public class KeyDialog extends JDialog
 {
@@ -185,13 +186,21 @@ public class KeyDialog extends JDialog
             playerTwoKeys.setRightKey(p2Right.getKeyCode());
             playerTwoKeys.setLeftKey(p2Left.getKeyCode());
             playerTwoKeys.setFireKey(p2Fire.getKeyCode());
+    	    
+
+	    if(!playerOneKeys.checkForConflict(playerTwoKeys)){
+	            
+            	//Set the players bindings back to the player managers
+            	theCi.register(1, playerOneKeys);
+            	theCi.register(2, playerTwoKeys);
             
-            //Set the players bindings back to the player managers
-            theCi.register(1, playerOneKeys);
-            theCi.register(2, playerTwoKeys);
-            
-            dispose();
-        }
+            	dispose();
+	    }
+	    else
+	    {
+		JOptionPane.showMessageDialog(null,"Conflict found with key bindings","Binding Conflict",JOptionPane.WARNING_MESSAGE);
+            }
+	}
     }
 
     public class CancelButtonListener implements ActionListener 
