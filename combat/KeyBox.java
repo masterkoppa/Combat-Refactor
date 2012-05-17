@@ -70,20 +70,37 @@ public class KeyBox extends JButton
     }
     
 
+    /**
+     * custom Key Listener for this key box
+     */
     public class TFListener implements KeyListener{
+    	/**
+    	 * constructor
+    	 */
         public TFListener(){}
-        public void keyPressed( KeyEvent e ){
+        
+        /**
+         * Fired when a key is pressed
+         */
+        @Override
+		public void keyPressed( KeyEvent e ){
             int kc = e.getKeyCode();
             System.out.println("keyCode = " + e.getKeyCode());
             setKeyCode(kc);
         }
-        public void keyReleased( KeyEvent e ){}
         
-        public void keyTyped( KeyEvent e )
+        /**
+         * Fired when a key is released
+         */
+        @Override
+		public void keyReleased( KeyEvent e ){}
+        
+        /**
+         * fired when a key is typed
+         */
+        @Override
+		public void keyTyped( KeyEvent e )
         {
-            //char kc = e.getKeyChar();
-            //System.out.println( e.getKeyCode() );
-            //setKeyCode( kc );
         }
     }
     

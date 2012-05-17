@@ -119,7 +119,8 @@ public class TimeManager extends Thread
      * This method starts the manager running, overriding the Thread run
      * method.
      */
-    public void run()
+    @Override
+	public void run()
     {
         try
         {

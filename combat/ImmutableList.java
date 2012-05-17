@@ -169,7 +169,8 @@ class ImmutableListEnumeration implements Enumeration {
      * Whether or not there are more elements in the list.
      * @return  True if there are more elements, false otherwise.
      */
-    public boolean hasMoreElements()
+    @Override
+	public boolean hasMoreElements()
     {
         return ( list != null ); 
     }
@@ -178,7 +179,8 @@ class ImmutableListEnumeration implements Enumeration {
      * Access to the next element in the immutable list.
      * @return  The next object in the immutable list.
      */
-    public Object nextElement() {
+    @Override
+	public Object nextElement() {
         //get the next element on the list and rteturn it
         Object returnVal = list.item;
         list = list.next;

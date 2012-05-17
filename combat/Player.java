@@ -99,7 +99,8 @@ public class Player extends Sprite
      * Instruct the player to handle the given conflict.  
      * @param   enemy   The sprite that is in conflict with this one.
      */
-    public void conflict( Sprite enemy )
+    @Override
+	public void conflict( Sprite enemy )
     {
         //determine what the object is that I am conflicting with and 
         // take the appropriate action
@@ -300,12 +301,14 @@ public class Player extends Sprite
     * this will never get called, since Players aren't ticked - 
     * their managers are.  Here for consistancy
     */
-    protected void move(){}
+    @Override
+	protected void move(){}
 
    /**
     * This is a no-op
     */
-    protected void end()
+    @Override
+	protected void end()
     {
         onBoard = false;
     }

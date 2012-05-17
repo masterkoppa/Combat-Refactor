@@ -137,7 +137,8 @@ public class Board implements Timed
      * have registered since the last pretick to repaint.  Finally,
      * the Board resets the Hashtable.
      */
-    public void pretick() 
+    @Override
+	public void pretick() 
     {
         int height = background.getHeight( null );
         int width = background.getWidth( null );
@@ -183,6 +184,7 @@ public class Board implements Timed
     /**
     * The Board does nothing on a tick.
     */
-    public void tick(){}
+    @Override
+	public void tick(){}
 
 }//class Board

@@ -107,6 +107,7 @@ public class PlayerManager extends Thread implements Timed {
 	/**
 	 * Starts this thread (a "life")
 	 */
+	@Override
 	public void run() {
 		// while I am alive...
 		while (myPlayer.isActive() && alive) {
@@ -244,6 +245,7 @@ public class PlayerManager extends Thread implements Timed {
 	/**
 	 * Here for the implementation of the Timed interface.
 	 */
+	@Override
 	public void pretick() {
 	}
 
@@ -251,6 +253,7 @@ public class PlayerManager extends Thread implements Timed {
 	 * Here for the implementation of the Timed interface; controls the movement
 	 * of the Player.
 	 */
+	@Override
 	public void tick() {
 		// on a tick, move the bullet foreward and make sure i repaint myself
 		myBullet.moveForward();

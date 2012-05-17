@@ -28,6 +28,7 @@ package combat;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.SwingConstants;
 
 import java.awt.GridLayout;
 
@@ -51,8 +52,8 @@ public class Scoreboard extends JPanel
         super(new GridLayout(1, 2));
         player1Score = player2Score = 0;
         
-        player1Display = new JLabel(PLAYER_1 + player1Score, JLabel.LEFT);
-        player2Display = new JLabel(PLAYER_2 + player2Score, JLabel.RIGHT);
+        player1Display = new JLabel(PLAYER_1 + player1Score, SwingConstants.LEFT);
+        player2Display = new JLabel(PLAYER_2 + player2Score, SwingConstants.RIGHT);
         
         add(player1Display);
         add(player2Display);

@@ -235,12 +235,14 @@ public class Game extends JPanel implements Timed, Runnable {
     /**
     * Executes all pretick actions
     */
-    public void pretick() { }
+    @Override
+	public void pretick() { }
 
     /**
     * Executes all tick actions
     */
-    public void tick()
+    @Override
+	public void tick()
     {
         if( gameActive )
         {
@@ -266,7 +268,8 @@ public class Game extends JPanel implements Timed, Runnable {
     /**
      * runs the thread.  goes while the thread is active
      */
-    public void run()
+    @Override
+	public void run()
     {
         while( combat )
         {

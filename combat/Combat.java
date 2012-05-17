@@ -87,7 +87,6 @@ import java.awt.event.*;
 public class Combat {
 
     static Game theGame;      //the game object appearing in the combat screen
-    static CommandInterpreter ci;
 
     /**
      * main
@@ -182,7 +181,8 @@ class CombatWindowListener implements WindowListener
      *
      * @param	WindowEvent e   the window event
      */
-    public void windowActivated( WindowEvent e ) {}
+    @Override
+	public void windowActivated( WindowEvent e ) {}
 
     /**
      * WindowClosed
@@ -190,7 +190,8 @@ class CombatWindowListener implements WindowListener
      *
      * @param	WindowEvent e   the window event
      */
-    public void windowClosed( WindowEvent e ) {}
+    @Override
+	public void windowClosed( WindowEvent e ) {}
 
     /**
      * WindowClosing
@@ -198,7 +199,8 @@ class CombatWindowListener implements WindowListener
      *
      * @param	WindowEvent e   the window event
      */
-    public void windowClosing( WindowEvent e )
+    @Override
+	public void windowClosing( WindowEvent e )
     {
         //when the window closes, quit the game and exit
         theGame.quit();
@@ -211,7 +213,8 @@ class CombatWindowListener implements WindowListener
      *
      * @param	WindowEvent e   the window event
      */
-    public void windowDeactivated( WindowEvent e ) {}
+    @Override
+	public void windowDeactivated( WindowEvent e ) {}
 
     /**
      * WindowDeiconified
@@ -219,7 +222,8 @@ class CombatWindowListener implements WindowListener
      *
      * @param	WindowEvent e   the window event
      */
-    public void windowDeiconified( WindowEvent e ) {}
+    @Override
+	public void windowDeiconified( WindowEvent e ) {}
 
     /**
      * WindowIconified
@@ -227,7 +231,8 @@ class CombatWindowListener implements WindowListener
      *
      * @param	WindowEvent e   the window event
      */
-    public void windowIconified( WindowEvent e ) {}
+    @Override
+	public void windowIconified( WindowEvent e ) {}
 
     /**
      * WindowOpened
@@ -235,6 +240,7 @@ class CombatWindowListener implements WindowListener
      *
      * @param	WindowEvent e   the window event
      */
-    public void windowOpened( WindowEvent e ) {}
+    @Override
+	public void windowOpened( WindowEvent e ) {}
 
 }

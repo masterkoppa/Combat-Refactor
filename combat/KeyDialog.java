@@ -126,8 +126,8 @@ public class KeyDialog extends JDialog
 
     /**
      * Sets the KeyBox to the key bindings being used in the game.
-     * @param playerOneKeys 
-     * @param playerTwoKeys 
+     * @param playerOneKeys The key binding for player one
+     * @param playerTwoKeys The key binding for player two
      */
     private void setupInitialKeys(KeyBinding playerOneKeys, KeyBinding playerTwoKeys)
     {
@@ -165,11 +165,21 @@ public class KeyDialog extends JDialog
         p2Fire.setKeyCode(playerTwoKeys.getFireKey());
     }
 
+    /**
+     * Custom button listener for the OK button
+     */
     public class OKButtonListener implements ActionListener
     {    
+    	/**
+    	 * Constructor
+    	 */
         public OKButtonListener(){}
         
-        public void actionPerformed( ActionEvent e )
+        /**
+         * Fired when any action is performed on the button
+         */
+        @Override
+		public void actionPerformed( ActionEvent e )
         {
             System.out.println( "ok button pressed " );
 
@@ -203,11 +213,21 @@ public class KeyDialog extends JDialog
 	}
     }
 
+    /**
+     * Cancel button listener
+     */
     public class CancelButtonListener implements ActionListener 
     {
+    	/**
+    	 * Constructor
+    	 */
         public CancelButtonListener() {}
         
-        public void actionPerformed( ActionEvent e ){
+        /**
+         * Fired when an action is performed
+         */
+        @Override
+		public void actionPerformed( ActionEvent e ){
             dispose();
         }
     }

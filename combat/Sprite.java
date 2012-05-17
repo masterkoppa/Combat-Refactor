@@ -117,13 +117,15 @@ abstract public class Sprite implements Timed
     /**
      * The Sprite does nothing on a pretick.
      */
-    public void pretick(){}
+    @Override
+	public void pretick(){}
 
     /**
      * On every tick, a Sprite will execute one action or move, 
      * register this action with its Board.
      */
-    public void tick() 
+    @Override
+	public void tick() 
     {
         move();
         board.registerMove( image, this );

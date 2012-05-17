@@ -106,6 +106,7 @@ public class Bullet extends Sprite {
 	 * @param enemy
 	 *            The sprite that is in conflict with this one.
 	 */
+	@Override
 	public void conflict(Sprite enemy) {
 		// determine what the object is that I am conflicting with and
 		// take the appropriate action
@@ -300,12 +301,14 @@ public class Bullet extends Sprite {
 	 * 
 	 * @return The player's new location.
 	 */
+	@Override
 	protected void move() {
 	}
 
 	/*
 	 * This is a no-op
 	 */
+	@Override
 	protected void end() {
 	}
 

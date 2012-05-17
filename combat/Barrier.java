@@ -56,17 +56,20 @@ public class Barrier extends Sprite {
      * it placed it on the playing area to begin with)
      * @param   enemy   The sprite that is in conflict with this one.
      */
-    public void conflict( Sprite enemy ){}
+    @Override
+	public void conflict( Sprite enemy ){}
 
     /**
      * The barrier makes no moves so this is a no-op.
      */
-    protected void move(){}
+    @Override
+	protected void move(){}
 
     /**
      * This is a no-op
      */
-    protected void end()
+    @Override
+	protected void end()
     {
         onBoard = false;
     }

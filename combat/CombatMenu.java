@@ -79,7 +79,8 @@ public class CombatMenu extends JPanel {
         newGame.addActionListener(
             new ActionListener()
             {
-                public void actionPerformed( ActionEvent e )
+                @Override
+				public void actionPerformed( ActionEvent e )
                 {
                     theGame.newGame();
                 }
@@ -92,7 +93,8 @@ public class CombatMenu extends JPanel {
         setLevel.addActionListener(
             new ActionListener()
             {
-                public void actionPerformed( ActionEvent e )
+                @Override
+				public void actionPerformed( ActionEvent e )
                 {
                     levSelectWindow.setVisible(true);
                 }
@@ -109,7 +111,8 @@ public class CombatMenu extends JPanel {
         setKeys.addActionListener(
             new ActionListener()
             {
-                public void actionPerformed( ActionEvent e )
+                @Override
+				public void actionPerformed( ActionEvent e )
                 {
                     k.setVisible(true);
                 }
@@ -124,7 +127,8 @@ public class CombatMenu extends JPanel {
         pause.addActionListener(
             new ActionListener()
             {
-                public void actionPerformed( ActionEvent e )
+                @Override
+				public void actionPerformed( ActionEvent e )
                 {
                     theGame.pause();
                 }
@@ -134,7 +138,8 @@ public class CombatMenu extends JPanel {
         resume.addActionListener(
             new ActionListener()
             {
-                public void actionPerformed( ActionEvent e )
+                @Override
+				public void actionPerformed( ActionEvent e )
                 {
                     theGame.resume();
                 }
@@ -147,7 +152,8 @@ public class CombatMenu extends JPanel {
         quit.addActionListener(
             new ActionListener()
             {
-                public void actionPerformed( ActionEvent e )
+                @Override
+				public void actionPerformed( ActionEvent e )
                 {
                     theGame.quit();
                     System.exit(1);
@@ -194,7 +200,8 @@ public class CombatMenu extends JPanel {
             // change file name.
             new ActionListener()
             {
-                public void actionPerformed( ActionEvent e )
+                @Override
+				public void actionPerformed( ActionEvent e )
                 {
                     theGame.setLevel( "level1.lvl" );
                     levSelectWindow.setVisible(false);
@@ -208,7 +215,8 @@ public class CombatMenu extends JPanel {
             // change file name.
             new ActionListener()
             {
-                public void actionPerformed( ActionEvent e )
+                @Override
+				public void actionPerformed( ActionEvent e )
                 {
                     theGame.setLevel( "level2.lvl" );
                     levSelectWindow.setVisible(false);

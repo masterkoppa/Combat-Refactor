@@ -69,7 +69,6 @@ import java.util.*;
 import java.awt.*;
 import java.io.*;
 import javax.swing.*;
-import java.awt.event.*;
 
 /**
  * The class that puts together the barriers and players for starting.
